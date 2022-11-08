@@ -1,0 +1,26 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: commercial-se
+  region: us-east-2
+
+vpc: 
+  id: vpc-0d14875a8c9c4badf
+  subnets:
+    public:
+      public-subnet-1: 
+        id: subnet-0c5ccaa6dab3ab852
+      public-subnet-2: 
+        id: subnet-04a86d75cbed2468c
+      public-subnet-3: 
+        id: subnet-02daef8bc23af900d
+
+nodeGroups:
+  - name: ng-public
+    instanceType: m5.large
+    desiredCapacity: 2
+    subnets:
+      - subnet-0c5ccaa6dab3ab852
+      - subnet-04a86d75cbed2468c
+      - subnet-02daef8bc23af900d

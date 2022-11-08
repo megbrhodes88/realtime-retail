@@ -1,0 +1,37 @@
+# base
+.vscode
+notepad.md
+ksql.sql
+
+# apiserver
+/apiserver/.vscode/
+/apiserver/target/
+/apiserver/HELP.md
+/apiserver/mvnw
+/apiserver/mvnw.cmd
+/apiserver/requests.http
+/apiserver/ksql.properties
+/apiserver/setup.properties
+
+# storefront
+/storefront/node_modules
+
+# supplier
+/supplier/.vscode/
+/supplier/target/
+/supplier/HELP.md
+/supplier/mvnw
+/supplier/mvnw.cmd
+/supplier/setup.properties
+
+# postgres
+
+# k8s
+secrets.sh
+
+# terraform
+/terraform/.terraform
+/terraform/.terraform.lock.hcl
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+

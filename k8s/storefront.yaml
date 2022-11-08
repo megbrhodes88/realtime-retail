@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: storefront-deployment
+    labels:
+        app: storefront
+spec: 
+    replicas: 1
+    strategy:
+        rollingUpdate:
+            maxSurge: 1
+            maxUnavailable: 1
+        type: RollingUpdate
+    selector:
+        matchLabels:
+            app: storefront
+    template:
+        metadata:
+            labels:
+                app: storefront
+        spec: 
+          containers:
+          - name: storefront
+            image: zachhamilton/rt-retail-storefront
+            env:
+            - name: APISERVER_HOSTNAME
+              value: "apiserver-service.default.svc.cluster.local"
+            ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1 
+kind: Service
+metadata:
+    name: storefront-service 
+    labels:
+        app: storefront
+spec: 
+    selector:
+        app: storefront
+    ports: 
+        - name: storefront-port 
+          port: 80 
+          targetPort: 80
+          protocol: TCP 
+    type: LoadBalancer
+
